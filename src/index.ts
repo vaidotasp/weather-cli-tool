@@ -1,7 +1,15 @@
 #!/usr/bin/env node
 
-const sayHello = () => {
-  console.log("hey there");
-};
+const program = require("commander");
 
-sayHello();
+program.version("1.0.0").description("Weather Forecast CLI");
+
+program
+  .command("today")
+  .alias("t")
+  .description("Show weather information for today")
+  .action(() => {
+    console.log("Today is a nice day");
+  });
+
+program.parse(process.argv);

@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "commander": "^2.19.0",
     "ts-node": "^8.0.2",
     "typescript": "^3.3.3333"
   },
