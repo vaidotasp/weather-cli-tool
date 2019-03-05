@@ -1,0 +1,2 @@
+ - we may want to use config store to keep the api keys
+ - alternatively users would be setting it up on .env?
