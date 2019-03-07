@@ -19,7 +19,6 @@ exports.getKey = function(type: string) {
   log(chalk`
     {green DarkSky API Key: ${key}}
   `);
-  console.log(key);
   return;
 };
 
@@ -33,5 +32,10 @@ exports.setKey = function(type: string, key: string) {
   } else if (type === "darksky") {
     conf.set("DARKSKYAPIKEY", key);
   }
-  return key;
+
+  log(chalk`
+    {green DarkSky API Key: ${key}}
+  `);
+
+  return;
 };

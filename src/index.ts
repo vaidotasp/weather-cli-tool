@@ -26,4 +26,6 @@ program
     apiActions.getKey("google");
   });
 
+//set key commands (need some sort of validation?)
+
 program.parse(process.argv);
