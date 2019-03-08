@@ -26,6 +26,20 @@ program
     apiActions.getKey("google");
   });
 
+program
+  .command("setdarkkey")
+  .description("Set Darksky API key")
+  .action(() => {
+    apiActions.setKey("darksky", program.args[0]);
+  });
+
+program
+  .command("setgooglekey")
+  .description("Set Google API key")
+  .action(() => {
+    apiActions.setKey("google", program.args[0]);
+  });
+
 //set key commands (need some sort of validation?)
 
 program.parse(process.argv);
