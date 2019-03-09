@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 const program = require("commander");
 const apiActions = require("./apiActions");
+import chalk from "chalk";
+const log = console.log;
 
 program.version("1.0.0").description("Weather Forecast CLI");
 
@@ -40,6 +42,14 @@ program
     apiActions.setKey("google", program.args[0]);
   });
 
-//set key commands (need some sort of validation?)
+// display help if no arguments were provided
+if (process.argv.length < 3) {
+  program.help();
+}
+
+program.command("*").action(() => {
+  log(chalk`{red Unknown Command}`);
+  program.help();
+});
 
 program.parse(process.argv);

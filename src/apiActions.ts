@@ -1,5 +1,5 @@
 const Configstore = require("configstore");
-const chalk = require("chalk");
+import chalk from "chalk";
 const log = console.log;
 
 //initialize two keys with null values
@@ -12,7 +12,7 @@ exports.getKey = function(type: string) {
   const key = type === "google" ? conf.get("GOOGLEAPIKEY") : conf.get("DARKSKYAPIKEY");
   if (key === null) {
     log(chalk`
-    {yellow Api key for ${type} is not set, use setkey -<type> command to set it up.}
+    {yellow Api key for ${type} is not set, use setdarkkey [key] or setgooglekey [key] command to set it up.}
   `);
     return;
   }
