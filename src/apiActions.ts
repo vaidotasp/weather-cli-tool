@@ -19,7 +19,7 @@ exports.getKey = function(type: string) {
   log(chalk`
     {green DarkSky API Key: ${key}}
   `);
-  return;
+  return key;
 };
 
 exports.setKey = function(type: string, key: string) {

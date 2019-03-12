@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const program = require("commander");
 const apiActions = require("./apiActions");
+const weatherActions = require("./weatherActions");
 import chalk from "chalk";
 const log = console.log;
 
@@ -11,7 +12,7 @@ program
   .alias("t")
   .description("Show weather information for today")
   .action(() => {
-    console.log("Today is a nice day");
+    weatherActions.today();
   });
 
 program

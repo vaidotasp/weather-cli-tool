@@ -37,7 +37,7 @@ npm init --yes //initialize project and skip the typical questionnaire
 git init //we want to make sure we can go back when invebitable disaster hits :)
 ```
 
-Now that we have empty working directory and XXX billions of NPM packages at our disposal, we can begin with few crucial dependencies
+Now that we have empty working directory and billions of NPM packages at our disposal, we can begin with few crucial dependencies
 
 To use typescript for this project we will need:
 
