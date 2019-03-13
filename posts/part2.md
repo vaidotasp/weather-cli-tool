@@ -72,4 +72,47 @@ We clearly need to do some time conversion, temperature adjustments to include C
 
 ## Part Y - Pretty print please
 
+First up - let's make this data presentable.
+
+1. Temperature needs to be converted to Celcius for convienience to display both C and F.
+2. Humidity needs to be shown in percentage
+3. Time indications need to be shown in human readable form
+
+```javascript
+const currentTemperatureC: string = String(Math.round(((currentTemperature - 32) * 5) / 9));
+const dailyTempHighC: string = String(Math.round(((dailyTempHigh - 32) * 5) / 9));
+const dailyTempLowC: string = String(Math.round(((dailyTempLow - 32) * 5) / 9));
+const currentTimeConverted: string = new Date(currentTime * 1000).toLocaleTimeString();
+const humidityPercent: string = String(Math.round(currentHumidity * 100));
+const highTime: string = new Date(dailyTempHighTime * 1000).toLocaleTimeString();
+const lowTime: string = new Date(dailyTempLowTime * 1000).toLocaleTimeString();
+```
+
+Let's unpack what is going on above. We are doing a few conversions and rounding results with a handy Math.round() method. Time conversions are also simply done with build in `new Date()` object. You may notice something strange next to the variable declarations `const currentTemperatureC: string = ...`. Those are TypeScript types. We indicate that the result of that particular assignment should always be a string. It seems trivial at this point, but if we ever want to change our program and how we calculate temperature, this will help us to make sure we do not change the type from `string` to `number` for example. You may also be asking why are we forcing some of the numbers to be converted to strings with `String()` -> that is needed because to print out the results we will be using JavaScript template literals (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) which will make TypeScript yell at us if we try to pass `number` to a string literal like this:
+
+```javascript
+const someCalculation: number = 14;
+console.log(`Print my calculation ${someCalculation}`); //TS yelling at us here!
+```
+
+I am not entirely sure why that is so if you have idea, do let me know in the comment below! 👇
+
+Our last step in this part is to print the results in a nice and presentable fashion. `chalk` module comes to the resque!
+
+```javascript
+log(chalk`
+|-|  {blue ╦ ╦┌─┐┌─┐┌┬┐┬ ┬┌─┐┬─┐}
+|-|  {blue ║║║├┤ ├─┤ │ ├─┤├┤ ├┬┘}
+|-|  {blue ╚╩╝└─┘┴ ┴ ┴ ┴ ┴└─┘┴└─}
+|-|   🌎 {blue Washington DC, USA} ${currentTimeConverted}            
+|-|   🐡 ${currentSummary}                                        
+|-|   ☀️ {yellow.bold ${currentTemperature}F}/{blue.bold ${currentTemperatureC}C}                       
+|-|   🌊 ${humidityPercent}%                              
+|-|   📇 ${dailySummary}                                    
+|-|   📈 High: {yellow.bold ${dailyTempHigh}F}/{blue.bold ${dailyTempHighC}C} At: ${highTime} 
+|-|   📉 Low : {yellow.bold ${dailyTempLow}F}/{blue.bold ${dailyTempLowC}C} At: ${lowTime}     
+`);
+return;
+```
+
 ## Part X - Publish to NPM
