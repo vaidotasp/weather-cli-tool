@@ -1,15 +1,20 @@
 {
-  "name": "cli-weather",
+  "name": "@vaidotasp/weather-cli",
   "version": "1.0.0",
-  "description": "",
+  "description": "Minimal CLI tool to show your current locations weather",
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc -p ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "node",
+    "cli",
+    "weather",
+    "typescript"
+  ],
+  "author": "@vaidotasp",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
     "chalk": "^2.4.2",

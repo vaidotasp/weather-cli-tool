@@ -115,4 +115,8 @@ log(chalk`
 return;
 ```
 
+No magic going on here, we are simply injecting our variable values into template literal which we can shape and organize however we like. I added "weather" letters up top and some of the emojis to denote various measurements like temperature, humidity and so on. If it all goes according to the plan, we should be seeing result similar to this:
+
+[linklink]
+
 ## Part X - Publish to NPM
