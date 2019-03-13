@@ -1,6 +1,6 @@
 {
   "name": "@vaidotasp/weather-cli",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Minimal CLI tool to show your current locations weather",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
