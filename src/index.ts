@@ -43,6 +43,13 @@ program
     apiActions.setKey("google", program.args[0]);
   });
 
+program
+  .command("setcoords")
+  .description("Set Coordinates [long, lat] for your location")
+  .action(() => {
+    apiActions.setCoords(program.args[0], program.args[1]);
+  });
+
 // display help if no arguments were provided
 if (process.argv.length < 3) {
   program.help();

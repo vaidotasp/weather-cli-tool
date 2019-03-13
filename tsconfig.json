@@ -2,6 +2,7 @@
   "include": ["src/**/*"],
   "exclude": ["node_modules"],
   "compilerOptions": {
+    "declaration": true,
     "noImplicitAny": true,
     "target": "es5",
     "module": "commonjs",
