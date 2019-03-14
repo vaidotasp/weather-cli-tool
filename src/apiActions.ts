@@ -3,7 +3,18 @@ import chalk from "chalk";
 const log = console.log;
 
 //initialize two keys with null values
-const conf = new Configstore("weather-cli", { GOOGLEAPIKEY: null, DARKSKYAPIKEY: null });
+const conf = new Configstore("weather-cli", { GOOGLEAPIKEY: null, DARKSKYAPIKEY: null, COORDINATES: [null, null] });
+
+exports.setCoords = function(lat: string, long: string) {
+  if (lat && long) {
+    const coords = [lat, long]
+    conf.set("COORDINATES", coords);
+    console.log(`Coordinates set to ${conf.get("COORDINATES")}`)
+    return;
+  }
+  throw new Error("Please provide both latitude and longtitude");
+  return;
+}
 
 exports.getKey = function(type: string) {
   if (type !== "google" && type !== "darksky") {
