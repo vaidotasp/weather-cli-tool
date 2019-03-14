@@ -6,6 +6,10 @@ const conf = new Configstore("weather-cli");
 
 exports.today = function() {
   const DARKSKY_API = conf.get("DARKSKYAPIKEY");
+  if(!DARKSKY_API) {
+    throw new Error("DarkSky API key is not set, use setdarkkey [key] command to set it up");
+    return;
+  }
   //DC - 38.889102, -77.050637
   let URL = `https://api.darksky.net/forecast/${DARKSKY_API}/38.889102,-77.050637?exclude=minutely`;
   axios.get(URL).then(response => {
