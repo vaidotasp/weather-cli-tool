@@ -45,7 +45,7 @@ program
 
 program
   .command("setcoords")
-  .description("Set Coordinates [lat, long] for your location")
+  .description("Set Coordinates [lat, long] for your location, if it is a negative number you should be using '--' in front of it. For example: setcoords 33.23123 -- -74.213123")
   .action(() => {
     if(program.args.length !== 3) {
         console.log('Please provide both, latitude and longtitude');

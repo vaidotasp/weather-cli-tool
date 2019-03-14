@@ -16,7 +16,7 @@ exports.today = function() {
     return;
   }
   //DC - 38.889102, -77.050637
-  let URL = `https://api.darksky.net/forecast/${DARKSKY_API}/38.889102,-77.050637?exclude=minutely`;
+  let URL = `https://api.darksky.net/forecast/${DARKSKY_API}/${lat},${long}?exclude=minutely`;
   axios.get(URL).then(response => {
     if (response.status !== 200) {
       return new Error(`Darksky API error ${response.status}`);
