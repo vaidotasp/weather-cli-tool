@@ -6,8 +6,13 @@ const conf = new Configstore("weather-cli");
 
 exports.today = function() {
   const DARKSKY_API = conf.get("DARKSKYAPIKEY");
+  const [lat, long] = conf.get("COORDINATES");
   if(!DARKSKY_API) {
     throw new Error("DarkSky API key is not set, use setdarkkey [key] command to set it up");
+    return;
+  }
+  if(!lat || !long) {
+    throw new Error("Coordinates are not set, make sure to set them using the command setcoords [lat] [long]");
     return;
   }
   //DC - 38.889102, -77.050637

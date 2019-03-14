@@ -45,8 +45,12 @@ program
 
 program
   .command("setcoords")
-  .description("Set Coordinates [long, lat] for your location")
+  .description("Set Coordinates [lat, long] for your location")
   .action(() => {
+    if(program.args.length !== 3) {
+        console.log('Please provide both, latitude and longtitude');
+        return;
+    }
     apiActions.setCoords(program.args[0], program.args[1]);
   });
 
