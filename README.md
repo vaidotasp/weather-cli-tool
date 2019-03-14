@@ -23,5 +23,5 @@ $ weather-cli setcoords [long, lat]
 - Use anywhere in your terminal
 
 ```javascript
-weather - t; //shows current temperature
+weather-cli - t; //shows current temperature
 ```
