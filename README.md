@@ -1,7 +1,7 @@
 # CLI Tool for Weather Forecast
 
 Deliver accurate and well formatted weather forecast right in your terminal.
-[pictureplaceholder]
+![](https://thepracticaldev.s3.amazonaws.com/i/89fopmm9lehlmql0rmem.png)
 
 ### Usage/Installation
 
