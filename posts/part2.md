@@ -1,12 +1,10 @@
 # Building Weather Forecast CLI tool Part 2
 
-(Link to part 1 - [www.google.com])
-
 This is the second part of the Building CLI tools series that will go into detail how to call DarkSky API from your command line and print out the results and then publish our CLI to npm.
 
-Just to recap from the Part 1 - We will be building something that will look similar to this image:
+Just to recap from the [Part 1](https://dev.to/vaidotas/building-weather-forecast-cli-tool-part-1-2mdj) - We will be building something that will look similar to this image:
 
-[linklink]
+
 
 ## Part A - Call the API and retrieve info
 
@@ -35,7 +33,6 @@ const conf = new Configstore("weather-cli");
 
 exports.today = function() {
   const DARKSKY_API = conf.get("DARKSKYAPIKEY");
-  //DC - 38.889102, -77.050637
   let URL = `https://api.darksky.net/forecast/${DARKSKY_API}/38.889102,-77.050637?exclude=minutely`;
   axios.get(URL).then(response => {
     if (response.status !== 200) {
@@ -61,12 +58,14 @@ exports.today = function() {
 };
 ```
 
-OK, let's unpack what is going on in the file above. We are importing previously mentioned dependencies, and API key which we set up in the Part 1 (link).
+OK, let's unpack what is going on in the file above. We are importing previously mentioned dependencies, and API key which we set up in the [Part 1](https://dev.to/vaidotas/building-weather-forecast-cli-tool-part-1-2mdj).
 `configstore` has a handy method `.get` to retrieve whichever key you have set previously. We will be using it to call our API endpoint. You will notice that I hardcoded longitude and latitude to my location, we can implement city search as a future goal but for now you can just put your own coordinates instead.
 
 Axios works as normal, after we check that response status is `200` (meaning everything is OK), we proceed to extract relevant data fields from the response payload. We are using object destructuring and [rename feature](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) of ES6.
 
 Now if we simply `console.log` that received information, results will not be great, you may see something like this:
+
+[imageplaceholder]
 
 We clearly need to do some time conversion, temperature adjustments to include Celsius and Farenheit and basically make it much more appealing.
 
@@ -88,7 +87,7 @@ const highTime: string = new Date(dailyTempHighTime * 1000).toLocaleTimeString()
 const lowTime: string = new Date(dailyTempLowTime * 1000).toLocaleTimeString();
 ```
 
-Let's unpack what is going on above. We are doing a few conversions and rounding results with a handy Math.round() method. Time conversions are also simply done with build in `new Date()` object. You may notice something strange next to the variable declarations `const currentTemperatureC: string = ...`. Those are TypeScript types. We indicate that the result of that particular assignment should always be a string. It seems trivial at this point, but if we ever want to change our program and how we calculate temperature, this will help us to make sure we do not change the type from `string` to `number` for example. You may also be asking why are we forcing some of the numbers to be converted to strings with `String()` -> that is needed because to print out the results we will be using JavaScript template literals (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) which will make TypeScript yell at us if we try to pass `number` to a string literal like this:
+We are doing a few conversions and rounding results with a handy `Math.round()` method. Time conversions are done with built-in `new Date()` object. You may notice something strange next to the variable declarations `const currentTemperatureC: string = ...`. Those are TypeScript types. We indicate that the result of that particular assignment should always be a string. It seems trivial at this point, but if we ever want to change our program and how we calculate temperature, this will help us to make sure we do not change the type from `string` to `number` for example. You may also be asking why are we forcing some of the numbers to be converted to strings with `String()` -> that is needed because to print out the results we will be using JavaScript template literals (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) which will make TypeScript yell at us if we try to pass `number` to a string literal like this:
 
 ```javascript
 const someCalculation: number = 14;
@@ -115,9 +114,7 @@ log(chalk`
 return;
 ```
 
-No magic going on here, we are simply injecting our variable values into template literal which we can shape and organize however we like. I added "weather" letters up top and some of the emojis to denote various measurements like temperature, humidity and so on. If it all goes according to the plan, we should be seeing result similar to this:
-
-[linklink]
+No magic going on here, we are simply injecting our variable values into template literal which we can shape and organize however we like. I added "weather" letters up top and some of the emojis to denote various measurements like temperature, humidity and so on. If it all goes according to the plan, we should be seeing result similar to the image at the beggining of this post.
 
 Some of the things we could do but is out of scope for this post:
 
@@ -127,7 +124,7 @@ Some of the things we could do but is out of scope for this post:
 
 ## Part C - Publish to NPM
 
-If we want to make this program truly reusable and available for other to install via npm registry, we need to publish it.
+If we want to make this program truly reusable and available for others to install via npm registry, we need to publish it.
 
 For that to happen we need to do a few things to make it "publishable":
 
