@@ -67,13 +67,13 @@ Now if we simply `console.log` that received information, results will not be gr
 
 [imageplaceholder]
 
-We clearly need to do some time conversion, temperature adjustments to include Celsius and Farenheit and basically make it much more appealing.
+We clearly need to do some time conversion, temperature adjustments to include Celsius and Fahrenheit and basically make it much more appealing.
 
 ## Part B - Pretty print please
 
 First up - let's make this data presentable.
 
-1. Temperature needs to be converted to Celcius for convienience to display both C and F.
+1. Temperature needs to be converted to Celsius for convenience to display both C and F.
 2. Humidity needs to be shown in percentage
 3. Time indications need to be shown in human readable form
 
@@ -96,7 +96,7 @@ console.log(`Print my calculation ${someCalculation}`); //TS yelling at us here!
 
 I am not entirely sure why that is so if you have idea, do let me know in the comment below! 👇
 
-Our last step in this part is to print the results in a nice and presentable fashion. `chalk` module comes to the resque!
+Our last step in this part is to print the results in a nice and presentable fashion. `chalk` module comes to the rescue!
 
 ```javascript
 log(chalk`
@@ -114,7 +114,7 @@ log(chalk`
 return;
 ```
 
-No magic going on here, we are simply injecting our variable values into template literal which we can shape and organize however we like. I added "weather" letters up top and some of the emojis to denote various measurements like temperature, humidity and so on. If it all goes according to the plan, we should be seeing result similar to the image at the beggining of this post.
+No magic going on here, we are simply injecting our variable values into template literal which we can shape and organize however we like. I added "weather" letters up top and some of the emojis to denote various measurements like temperature, humidity and so on. If it all goes according to the plan, we should be seeing result similar to the image at the top of this post.
 
 Some of the things we could do but is out of scope for this post:
 
@@ -166,13 +166,13 @@ Once ready to publish, make sure you have an account with npm, if so, you can go
 npm login
 ```
 
-All that's left is to run `npm publish --access=public` command to push this little program out in the wild and have it accesible to the public.
+All that's left is to run `npm publish --access=public` command to push this little program out in the wild and have it accessible to the public.
 
 If all goes well you can navigate to `https://www.npmjs.com/package/@username/module-name` and find you module!
 
 That is it!
 
-Here is the code if you want to take a look and compare notes. I will still continue to tinker with it so by the time this post is published some of the funcitonality may have already been changed!
+Here is the code if you want to take a look and compare notes. I will still continue to tinker with it so by the time this post is published some of the functionality may have already been changed!
 
 [GitHub](https://github.com/vaidotasp/weather-cli-tool)
 
